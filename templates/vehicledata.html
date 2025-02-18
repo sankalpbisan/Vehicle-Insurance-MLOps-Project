@@ -47,11 +47,7 @@
 
             <button type="submit">Predict</button>
         </form>
-
-        <form method="get" action="/train">
-            <button type="submit" class="train-button">Train Model</button>
-        </form>
-
+        
         {% if context %}
             <div class="result">
                 <h2>Result: {{ context }}</h2>
