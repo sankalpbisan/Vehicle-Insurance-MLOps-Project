@@ -157,12 +157,15 @@ For any questions or inquiries, feel free to reach out:
 
 *I have removed all instances from AWS and MongoBD for security concerns, and from AWS, because of the cost factor.*
 
+---
+
 Also check out my various projects:
 1. **Design-and-Development-of-Real-Time-Sign-Language-to-Speech-Conversion-System** - [Click Here to visit this repo](https://github.com/sankalpbisan/Design-and-Development-of-Real-Time-Sign-Language-to-Speech-Conversion-System.git)
 2. **Student Performance Indicator** - [Click Here to visit this repo](https://github.com/sankalpbisan/MLOps_practice_project_students_performance_indicator.git)
 3. **Patients Hospital Charges Predictor** - [Click Here to visit this repo](https://github.com/sankalpbisan/MLOps_Practice_Project-Patients-Hospital-Charges-Predictor.git)
 
-   
+---
+
 Thank you for visiting the Vehicle Insurance MLOps Project repository. Feel free to explore the code, raise issues, or contribute to the project!
 
 
