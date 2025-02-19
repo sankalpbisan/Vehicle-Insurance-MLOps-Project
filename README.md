@@ -68,6 +68,7 @@ pip install -r requirements.txt
 Ensure you have all the required environment variables set. You can use a `.env` file or set them directly.
 
 If you want to run the training-pipeline, then you'll have to add you own access_id and access_key from MongoDB Atlas along with AWS credentials for pushing model onto AWS and using its services like Elastic Container Registry (ECR) and EC2.
+
 You can either set these variables from environment variables service in windows or directly provide them in constants file as:
 ```
 AWS_ACCESS_KEY_ID=your_access_key
