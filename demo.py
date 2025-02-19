@@ -1,4 +1,2 @@
-from src.pipline.training_pipeline import TrainPipeline
-
-pipline = TrainPipeline()
-pipline.run_pipeline()
+#This is a demo file
+#Used for verifying/rectifying the various scripts
