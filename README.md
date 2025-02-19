@@ -8,8 +8,8 @@ This repository contains the implementation of an end-to-end MLOps pipeline for 
 
 - [Project Overview](#-project-overview)
 - [Features](#-features)
-- [Technologies Used](#technologies-used)
-- [Setup & Installation](#setup--installation)
+- [Technologies Used](#-technologies-used)
+- [Setup & Installation](#-setup-&-installation)
 - [How It Works](#-how-it-works)
 - [Model Development](#-model-development)
 - [Deployment](#-deployment)
