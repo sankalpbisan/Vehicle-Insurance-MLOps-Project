@@ -1,12 +1,8 @@
 # Vehicle Insurance MLOps Project
 
-![Project Banner](https://via.placeholder.com/1500x500.png?text=Vehicle+Insurance+MLOps+Project)
+This repository contains the implementation of an end-to-end MLOps pipeline for a vehicle insurance project. The goal of this project is to predict vehicle insurance claims using machine learning models, integrated with MLOps practices such as modular coding, continuous integration, and continuous deployment.
 
-This repository contains the implementation of an end-to-end MLOps pipeline for a vehicle insurance project. The goal of this project is to predict vehicle insurance claims using machine learning models, integrated with MLOps practices such as automated deployment, monitoring, and continuous integration.
-
-## 🚀 Project Overview
-
-The **Vehicle Insurance MLOps Project** aims to build and deploy machine learning models that can predict insurance claims for vehicles. The project follows best practices for model development, deployment, and monitoring in a real-world MLOps environment.
+---
 
 ## 🧑‍💻 Table of Contents
 
@@ -17,10 +13,17 @@ The **Vehicle Insurance MLOps Project** aims to build and deploy machine learnin
 - [How It Works](#-how-it-works)
 - [Model Development](#-model-development)
 - [Deployment](#-deployment)
-- [Monitoring & Maintenance](#-monitoring--maintenance)
 - [Contributing](#-contributing)
 - [License](#-license)
 - [Contact](#-contact)
+
+---
+
+## 🚀 Project Overview
+
+The **Vehicle Insurance MLOps Project** aims to build and deploy machine learning models that can predict which customer is likely to buy insurance for vehicles. The project follows best practices for model development, deployment, and monitoring in a real-world MLOps environment.
+
+---
 
 ## 🌟 Features
 
@@ -29,18 +32,19 @@ The **Vehicle Insurance MLOps Project** aims to build and deploy machine learnin
 - **Model Monitoring**: Tools for tracking model performance and drift.
 - **Data Processing**: Efficient ETL (Extract, Transform, Load) pipeline to handle raw data.
 - **Automated Deployment**: Deploy models automatically using CI/CD tools.
-- **Scalable Infrastructure**: Leverages cloud technologies for easy scaling.
+
+---
 
 ## 🛠️ Technologies Used
 
 - **Programming Languages**: Python, Shell Scripting
-- **Machine Learning Frameworks**: Scikit-learn, TensorFlow, Keras
-- **MLOps Tools**: MLflow, Docker, Kubernetes, Jenkins, GitLab CI/CD
-- **Cloud Platforms**: AWS (or specify other platforms you’re using)
-- **Database/Storage**: PostgreSQL, AWS S3 (or specify your choice)
-- **Monitoring**: Prometheus, Grafana
+- **Machine Learning Framework**: Scikit-learn
+- **MLOps Tools**: MLflow, Docker, GitHub Actions
+- **Cloud Platform**: AWS (S3 Bucket, ECR)
+- **Database/Storage**: MongoDB
 - **Version Control**: Git, GitHub
-- **Other Tools**: Apache Airflow for workflow orchestration, DVC for data versioning
+
+---
 
 ## ⚙️ Setup & Installation
 
@@ -59,15 +63,22 @@ cd Vehicle-Insurance-MLOps-Project
 pip install -r requirements.txt
 ```
 
-### 3. Setup environment variables:
+### 3. Set access/environment variables:
 
 Ensure you have all the required environment variables set. You can use a `.env` file or set them directly.
 
-Example `.env`:
-
+If you want to run the training-pipeline, then you'll have to add you own access_id and access_key from MongoDB Atlas along with AWS credentials for pushing model onto AWS and using its services like Elastic Container Registry (ECR) and EC2.
+You can either set these variables from environment variables service in windows or directly provide them in constants file as:
 ```
 AWS_ACCESS_KEY_ID=your_access_key
 AWS_SECRET_ACCESS_KEY=your_secret_key
+REGION_NAME = "your_selected_region"
+```
+and
+```
+DATABASE_NAME = "your_database_name"
+COLLECTION_NAME = "your_collection_name"
+MONGODB_URL_KEY = "your_connection_url"
 ```
 
 ### 4. Run the project:
@@ -86,26 +97,33 @@ If you wish to run it in a containerized environment:
 docker build -t vehicle-insurance .
 docker run -p 5000:5000 vehicle-insurance
 ```
+I have directly pushed the 'model.pkl' file to S3 bucket in AWS and predictions are done using pickle file from this bucket only.
+
+---
 
 ## 🧠 How It Works
 
-1. **Data Ingestion**: Collect data from various sources (e.g., insurance claims, vehicle details, user profiles).
-2. **Data Preprocessing**: Clean, normalize, and transform the data into a format suitable for model training.
-3. **Model Development**: Train multiple machine learning models, tune hyperparameters, and select the best model.
-4. **Model Evaluation**: Evaluate models using appropriate metrics (accuracy, precision, recall, etc.).
-5. **Deployment**: Deploy the model to a production environment using Docker, Kubernetes, and CI/CD pipelines.
-6. **Monitoring**: Continuously monitor model performance to ensure accuracy and prevent data drift.
+1. **Data Ingestion**: Collect data from MongoDB database Cluster.
+2. **Data Validation**: Received Data is validated to check whether  data is proper as excepcted or not.
+3. **Data Preprocessing**: Clean, normalize, and transform the data into a format suitable for model training.
+4. **Model Development**: Train multiple machine learning models, tune hyperparameters, and select the best model.
+5. **Model Evaluation**: Evaluate models using appropriate metrics (accuracy, precision, recall, etc.).
+6. **Deployment**: Deploy the model to a production environment (here, AWS) using CI/CD pipelines.
+
+---
 
 ## 🤖 Model Development
 
-This project uses a combination of classical machine learning techniques and deep learning models to predict insurance claims. The models are evaluated and tuned to achieve the best performance based on validation data.
+This project uses a combination of classical machine learning techniques to predict 'buying insurance?' The models are evaluated and tuned to achieve the best performance based on validation data.
 
 ### Key Steps:
 1. Data preprocessing (handling missing values, feature engineering, scaling).
-2. Model training using Scikit-learn, TensorFlow, or other libraries.
+2. Model training using Scikit-learn.
 3. Hyperparameter tuning and model selection.
 
 For more details on how the models are developed and trained, check the `notebooks` and `src` directories.
+
+---
 
 ## 🚢 Deployment
 
@@ -113,26 +131,15 @@ The model is deployed in a production-like environment using Docker and Kubernet
 
 ### Steps:
 1. **Dockerize the Model**: Containerize the model using Docker.
-2. **CI/CD Integration**: Configure Jenkins or GitLab CI/CD pipelines for automated testing and deployment.
-3. **Scalable Infrastructure**: Use Kubernetes to deploy and scale the model for production usage.
+2. **CI/CD Integration**: Configure GitHub Actions : CI/CD pipelines for automated testing and deployment.
 
-## 📊 Monitoring & Maintenance
-
-- **Model Monitoring**: Continuously track the model's performance and ensure it does not drift.
-- **Performance Metrics**: Use tools like Prometheus and Grafana for real-time monitoring of the model's health.
-- **Model Retraining**: Implement retraining pipelines to keep the model up-to-date.
+---
 
 ## 🤝 Contributing
 
-Contributions are welcome! Please follow these steps to contribute:
+Contributions are welcome! 
 
-1. Fork the repository.
-2. Create a feature branch.
-3. Commit your changes.
-4. Push to the branch.
-5. Create a pull request.
-
-Be sure to follow the [Code of Conduct](#).
+If you have any suggestions feel free to reach out.
 
 ## 📜 License
 
@@ -142,25 +149,20 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 For any questions or inquiries, feel free to reach out:
 
-- **Email**: your.email@example.com
-- **LinkedIn**: [LinkedIn Profile](https://linkedin.com/in/yourprofile)
+- **Email**: sankalpbisan07@gmail.com
+- **LinkedIn**: [My LinkedIn Profile](https://in.linkedin.com/in/sankalpbisan)
 
 ---
 
+*I have removed all instances from AWS and MongoBD for security concerns, and from AWS, because of the cost factor.*
+
+Also check out my various projects:
+1. **Design-and-Development-of-Real-Time-Sign-Language-to-Speech-Conversion-System** - [Click Here to visit this repo](https://github.com/sankalpbisan/Design-and-Development-of-Real-Time-Sign-Language-to-Speech-Conversion-System.git)
+2. **Student Performance Indicator** - [Click Here to visit this repo](https://github.com/sankalpbisan/MLOps_practice_project_students_performance_indicator.git)
+3. **Patients Hospital Charges Predictor** - [Click Here to visit this repo](https://github.com/sankalpbisan/MLOps_Practice_Project-Patients-Hospital-Charges-Predictor.git)
+
+   
 Thank you for visiting the Vehicle Insurance MLOps Project repository. Feel free to explore the code, raise issues, or contribute to the project!
-```
 
-### Key Sections in the README:
-- **Project Overview**: Gives a brief introduction to the project.
-- **Features**: A quick list of the key features of your project.
-- **Technologies Used**: Lists the technologies and tools employed.
-- **Setup & Installation**: Provides installation instructions for users to easily set up the project.
-- **How It Works**: An overview of the project's workings from data collection to deployment.
-- **Model Development**: Brief details about model development, evaluation, and selection.
-- **Deployment**: Information on how the project is deployed using Docker, Kubernetes, and CI/CD pipelines.
-- **Monitoring & Maintenance**: Describes the monitoring system in place for the model.
-- **Contributing**: Encourages others to contribute and outlines the process.
-- **License**: Specifies the project's license.
-- **Contact**: Your contact info for further questions.
 
-Feel free to customize it further if you have specific details you'd like to add!
+
